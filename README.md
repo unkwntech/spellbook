@@ -1,5 +1,8 @@
-# spellbook
+# SpellBook
 Discord bot providing information on SRD Content directly in your server!
+
+#### [Invite the Bot to your Server!](https://discordapp.com/oauth2/authorize?client_id=653268408619499553&permissions=3072&scope=bot)
+#### [Join the Discord Server!](https://discord.gg/TaWsnpY)
 
 # Commands
 ## ?monster [name]
