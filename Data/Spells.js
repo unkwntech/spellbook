@@ -30,7 +30,7 @@ let LoadSpellsToMemory = function()
             spell.SourceBook = row.SourceBook;
             spell.SourcePage = row.SourcePage;
             spell.Materials = row.Materials;
-            spell.Classes = JSON.parse(row.Classes.replace(/\'/gi, '"'));
+            spell.Classes = JSON.parse(row.Classes.split("'").join('"'));
             spell.School = row.School;
             spell.DataSource = row.DataSource;
 

@@ -59,6 +59,7 @@ class SpellCommand extends Command
             spell.SourceBook = msr.SourceBook;
             spell.SourcePage = msr.SourcePage;
             spell.Materials = msr.Materials;
+console.log(msr.Classes);
             spell.Classes = msr.Classes;
             spell.School = msr.School;
             spell.DataSource = "Memory";
@@ -133,6 +134,8 @@ class SpellCommand extends Command
                 spell.SourcePage = data.page.split(' ')[1].trim();
 
                 spell.Materials = (data.material === undefined)?"None":data.material;
+
+		console.log(data.classes);
 
                 for(var i =0; i < data.classes.length; i++)
                     spell.Classes.push(data.classes[i].name);
