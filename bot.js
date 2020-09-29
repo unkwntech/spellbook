@@ -18,16 +18,8 @@ const client = new AkairoClient({
 
 //Discord bot token
 
-var token;
-//Prod Token
-if(global.DEBUG)
-{
-    token = "NjU1NjQ5NjM4ODExOTU5MzA2.XfXLVg.ZfAmDtKESvdks-C9rb8Wtl3_-x0";
-}
-else
-{
-    token = "NjUzMjY4NDA4NjE5NDk5NTUz.XgFZpg.MAnxEbtx9mjRRmIO8OWXgHQvp8U";
-}
+var token = "TOKEN";
+
 client.login(token);
 
 client.InviteLink = '';
