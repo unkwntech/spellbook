@@ -1,2 +1,7 @@
 .vscode
 *.code-workspace
+bot.log
+bot.pid
+bulkImport.js
+node_module\*
+verify.sh
