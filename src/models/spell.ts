@@ -53,7 +53,7 @@ export default class Spell implements Identifiable {
             color: 7419530,
             title: this.name,
             description: this.description.substring(0, 2045) + ((this.description.length > 2048)?"...":""),
-            url: "https://dndbeyond.com/spells/" + this.name.replace(' ', '-'),
+            url: "https://dndbeyond.com/spells/" + encodeURIComponent(this.name.replace(' ', '-')),
             fields: [
                 { name: "Level", value: this.level.toString(), inline: true }, //0
                 { name: "Casting Time", value: this.castingTime, inline: true }, //1

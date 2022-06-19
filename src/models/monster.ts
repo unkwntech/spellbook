@@ -1,6 +1,18 @@
 import Factory from "./factory";
 import { Identifiable } from "./identifiable";
 
+export class MonsterDetail {
+    public name: string;
+    public desc?: string;
+    public value?: string;
+
+    constructor(json: any) {
+        this.name = json.name;
+        this.desc = json.desc;
+        this.value = json.value;
+    }
+}
+
 export default class Monster implements Identifiable {
     public _id: string;
     public name: string;
@@ -19,7 +31,7 @@ export default class Monster implements Identifiable {
     public int: number;
     public wis: number;
     public cha: number;
-    public proficiencies: object[];
+    public proficiencies: MonsterDetail[];
     public damageVulnerabilities: string[];
     public damageResistances: string[];
     public damageImmunities: string[];
@@ -27,9 +39,9 @@ export default class Monster implements Identifiable {
     public senses: string[];
     public languages: string[];
     public challengeRating: number;
-    public specialAbilities: object[];
-    public actions: object[];
-    public legendaryActions: object[];
+    public specialAbilities: MonsterDetail[];
+    public actions: MonsterDetail[];
+    public legendaryActions: MonsterDetail[];
     public dataSource: string;
     
     
@@ -52,7 +64,7 @@ export default class Monster implements Identifiable {
         this.int = json.int;
         this.wis = json.wis;
         this.cha = json.cha;
-        this.proficiencies = json.proficiencies;
+        this.proficiencies = json.proficiencies.map((p: any) => new MonsterDetail(p));
         this.damageVulnerabilities = json.damageVulnerabilities;
         this.damageResistances = json.damageResistances;
         this.damageImmunities = json.damageImmunities;
@@ -60,9 +72,9 @@ export default class Monster implements Identifiable {
         this.senses = json.senses;
         this.languages = json.languages;
         this.challengeRating = json.challengeRating;
-        this.specialAbilities = json.specialAbilities;
-        this.actions = json.actions;
-        this.legendaryActions = json.legendaryActions;
+        this.specialAbilities = json.specialAbilities.map((s: any) => new MonsterDetail(s));
+        this.actions = json.actions.map((a: any) => new MonsterDetail(a));
+        this.legendaryActions = json.legendaryActions.map((l: any) => new MonsterDetail(l));
         this.dataSource = json.dataSource;
     }
 

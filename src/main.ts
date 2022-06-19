@@ -30,12 +30,12 @@ client.on("messageCreate", async (message) => {
     if(message.author.bot) return; //Ignore bots
     let args: string[] = stringArgv(message.content);
     //Enables case-insensitive searches by building a basic regex /terms/i
-    let searchTerm = new RegExp(args.slice(1).join(" "), 'i');
+    let searchTerm = new RegExp(`^${args.slice(1).join(" ")}$`, 'i');
     switch(args[0]) {
         case "?s":
         case "?spell":
             DbUtilities.QueryOne({name: searchTerm}, Spell.getFactory()).then(d => {
-                message.channel.send({embeds: d.toEmbed()});
+                message.channel.send({"embeds": d.toEmbed()});
             }).catch(e => {
                 console.error(e);
                 message.channel.send("I couldn't find that spell in my notes, I'll head to the library!")
@@ -44,7 +44,7 @@ client.on("messageCreate", async (message) => {
         case "?m":
         case "?monster":
             DbUtilities.QueryOne({name: searchTerm}, Monster.getFactory()).then(d => {
-                message.channel.send({embeds: d.toEmbed()});
+                message.channel.send({"embeds": d.toEmbed()});
             }).catch(e => {
                 console.error(e);
                 message.channel.send("I couldn't find that monster in my notes, it sounds ferocious though!")
