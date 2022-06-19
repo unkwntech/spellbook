@@ -19,6 +19,7 @@ export default class Spell implements Identifiable {
     public dataSource: string;
     
     constructor(json: any) {
+        if(!json._id) throw new Error("id is required for Spell")
         this._id = json._id;
         this.name = json.name;
         this.level = json.level;
@@ -47,12 +48,12 @@ export default class Spell implements Identifiable {
         })
     }
 
-    public toEmbed(): object {
-        return {
+    public toEmbed(): object[] {
+        return [{
             color: 7419530,
             title: this.name,
             description: this.description.substring(0, 2045) + ((this.description.length > 2048)?"...":""),
-             url: "https://dndbeyond.com/spells/" + this.name.replace(' ', '-'),
+            url: "https://dndbeyond.com/spells/" + this.name.replace(' ', '-'),
             fields: [
                 { name: "Level", value: this.level.toString(), inline: true }, //0
                 { name: "Casting Time", value: this.castingTime, inline: true }, //1
@@ -65,8 +66,11 @@ export default class Spell implements Identifiable {
                 { name: "School", value: this.school, inline: true }, //8
                 { name: "Materials", value: this.materials, inline: false }, //9
                 { name: "Source", value: this.source, inline: false }, //10
-            ]
-        };
+            ],
+            footer: {
+                "text": `Data from ${this.dataSource}`
+            }
+        }];
     }
 
 }
