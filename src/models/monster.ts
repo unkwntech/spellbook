@@ -27,9 +27,9 @@ export default class Monster implements Identifiable {
     public senses: string[];
     public languages: string[];
     public challengeRating: number;
-    public specialAbilities: string[];
+    public specialAbilities: object[];
     public actions: object[];
-    public legendaryActions: string[];
+    public legendaryActions: object[];
     public dataSource: string;
     
     
@@ -44,6 +44,7 @@ export default class Monster implements Identifiable {
         this.armorClass = json.armorClass;
         this.avgHitPoints = json.avgHitPoints;
         this.hitPointCalculationMethod = json.hitPointCalculationMethod;
+        this.hitDie = json.hitDie;
         this.speed = json.speed;
         this.str = json.str;
         this.dex = json.dex;
