@@ -17,6 +17,7 @@ const client = new Discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
+        0x8000 //Message Content
     ]
 })
 
