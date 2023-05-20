@@ -20,12 +20,12 @@ dbClient.addListener("error", e => {
 // TODO: Db connection pooling.
 
 export class DbUtilities {
-    static async Insert<T>(o: T, factory: Factory<T>) {
+    static async Insert<T>(o: T, collectionName: string){//, factory: Factory<T>) {
         try {
             await dbClient.connect();
 
             const database = dbClient.db(process.env.DB_NAME);
-            const collection = database.collection(factory.getCollectionName());
+            const collection = database.collection(collectionName);//factory.getCollectionName());
 
             const result = await collection.insertOne(o);
 

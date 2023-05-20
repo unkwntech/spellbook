@@ -2,7 +2,7 @@ import { DbUtilities } from './db-utils';
 import * as Discord from 'discord.js';
 import stringArgv from 'string-argv';
 
-import Monster from './models/monster';
+import Monster from './models/monster_old';
 import Spell from './models/spell';
 
 require('dotenv').config();
